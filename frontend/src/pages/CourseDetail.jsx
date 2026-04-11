@@ -45,7 +45,7 @@ export default function CourseDetail() {
             <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Contenido del Curso</h2>
             <div className="space-y-2">
               {course.lessons?.map((lesson, index) => (
-                <Link key={lesson.id} to={`/lesson/${lesson.slug}`} className="flex items-center gap-4 p-4 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors">
+                <Link key={lesson.id} to={`/lesson/${lesson.slug}`} className="flex items-center gap-4 p-4 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors cursor-pointer">
                   <span className="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-sm font-medium">{index + 1}</span>
                   <div className="flex-1"><h3 className="font-medium text-gray-900 dark:text-white">{lesson.title}</h3></div>
                   <CheckCircle className="w-5 h-5 text-gray-600" />

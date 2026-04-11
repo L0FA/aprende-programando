@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { api } from '../api';
-import { BookOpen } from 'lucide-react';
+import CoursesGrid from '../components/CoursesGrid';
 
 export default function Courses() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -33,23 +33,7 @@ export default function Courses() {
         ))}
       </div>
 
-      {loading ? <p>Cargando...</p> : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {courses.map((course) => (
-            <Link key={course.id} to={`/courses/${course.slug}`} className="card p-6">
-              <div className="aspect-video bg-gradient-to-br from-primary-500/20 to-purple-500/20 rounded-lg mb-4 flex items-center justify-center">
-                <BookOpen className="w-12 h-12 text-primary-500" />
-              </div>
-              <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">{course.title}</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">{course.description}</p>
-              <div className="flex gap-2">
-                <span className="tag">{course.difficulty}</span>
-                <span className="tag">{course.lessons?.length || 0} lecciones</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      )}
+      {loading ? <p>Cargando...</p> : <CoursesGrid courses={courses} />}
     </div>
   );
 }

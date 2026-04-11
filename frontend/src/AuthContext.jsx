@@ -20,15 +20,25 @@ export function AuthProvider({ children }) {
   }, []);
 
   const login = async (email, password) => {
-    const data = await api.auth.login({ email, password });
-    localStorage.setItem('token', data.token);
-    setUser(data.user);
+    try {
+      const data = await api.auth.login({ email, password });
+      localStorage.setItem('token', data.token);
+      setUser(data.user);
+      return { success: true };
+    } catch (error) {
+      return { success: false, error: 'Credenciales inválidas' };
+    }
   };
 
   const register = async (name, email, password) => {
-    const data = await api.auth.register({ name, email, password });
-    localStorage.setItem('token', data.token);
-    setUser(data.user);
+    try {
+      const data = await api.auth.register({ name, email, password });
+      localStorage.setItem('token', data.token);
+      setUser(data.user);
+      return { success: true };
+    } catch (error) {
+      return { success: false, error: 'Error al registrar' };
+    }
   };
 
   const logout = () => {

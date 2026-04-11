@@ -11,7 +11,18 @@ import lessonRoutes from './routes/lesson.routes.js';
 import { router as authRoutes } from './routes/auth.routes.js';
 
 const app = express();
-const prisma = new PrismaClient();
+
+// Use Turso adapter in production, local SQLite in development
+let prisma;
+if (process.env.NODE_ENV === 'production' && process.env.TURSO_URL) {
+  const { PrismaLibSql } = await import('@prisma/adapter-libsql');
+  const { createClient } = await import('@libsql/client');
+  const libsql = createClient({ url: process.env.TURSO_URL });
+  const adapter = new PrismaLibSql(libsql);
+  prisma = new PrismaClient({ adapter });
+} else {
+  prisma = new PrismaClient();
+}
 
 app.use(helmet());
 app.use(cors({
