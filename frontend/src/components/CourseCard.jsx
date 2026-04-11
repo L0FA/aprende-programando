@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const difficultyColors = {
   BEGINNER: 'bg-green-500/10 text-green-400 border-green-500/20',
@@ -18,7 +18,7 @@ const difficultyLabel = {
 
 export default function CourseCard({ course }) {
   return (
-    <Link to={`/courses/${course.slug}`}>
+    <Link href={`/courses/${course.slug}`}>
       <div className="card group cursor-pointer h-full flex flex-col">
         <div className="aspect-video bg-gradient-to-br from-primary-500/20 to-purple-500/20 flex items-center justify-center">
           <span className="text-4xl">{course.category?.icon === 'code' ? '💻' : course.category?.icon === 'brain' ? '🧠' : '📚'}</span>
@@ -28,7 +28,7 @@ export default function CourseCard({ course }) {
             <span className={`tag ${difficultyColors[course.difficulty]}`}>{difficultyLabel[course.difficulty]}</span>
             {course.featured && <span className="tag bg-yellow-500/10 text-yellow-400">⭐ Destacado</span>}
           </div>
-          <h3 className="text-lg font-bold mb-2 group-hover:text-primary-400 transition-colors text-gray-900 dark:text-white">{course.title}</h3>
+          <h3 className="text-lg font-bold mb-2 group-hover:text-primary-400 transition-colors">{course.title}</h3>
           <p className="text-gray-400 text-sm mb-4 flex-1">{course.description}</p>
           <div className="flex items-center justify-between text-sm text-gray-500 border-t border-gray-800 pt-4">
             <span>{course._count?.lessons || 0} lecciones</span>

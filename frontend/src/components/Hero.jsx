@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+'use client';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef } from 'react';
+import Link from 'next/link';
 import { BookOpen, Code, Brain, Rocket, Database, HelpCircle, X, ChevronRight } from 'lucide-react';
 
 const paths = [
@@ -99,7 +100,7 @@ export default function Hero() {
               className="flex flex-wrap gap-3 mb-6"
             >
               {paths.map((path) => (
-                <Link key={path.href} to={path.href}>
+                <Link key={path.href} href={path.href}>
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -121,13 +122,13 @@ export default function Hero() {
             >
               <button 
                 onClick={() => setShowQuiz(true)}
-                className="px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-lg transition-all inline-flex items-center gap-2"
+                className="btn-primary inline-flex items-center gap-2"
               >
                 Ayúdame <ChevronRight className="w-5 h-5" />
               </button>
               <button 
                 onClick={scrollToAbout}
-                className="px-6 py-3 bg-gray-100 dark:bg-dark-100 hover:bg-gray-200 dark:hover:bg-dark-200 text-gray-900 dark:text-white font-semibold rounded-lg border border-gray-200 dark:border-gray-700 transition-all inline-flex items-center gap-2"
+                className="btn-secondary inline-flex items-center gap-2"
               >
                 <HelpCircle className="w-5 h-5" /> ¿Qué es esto?
               </button>

@@ -1,7 +1,8 @@
+'use client';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-import { useAuth } from '../AuthContext';
+import { useAuth } from './AuthProvider';
 
 export default function AuthModal({ isOpen, onClose, initialMode = 'login' }) {
   const [mode, setMode] = useState(initialMode);
@@ -19,7 +20,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }) {
 
     const result = mode === 'login' 
       ? await login(email, password)
-      : await register(name, email, password);
+      : await register(email, password, name);
 
     setLoading(false);
 
@@ -111,7 +112,7 @@ export default function AuthModal({ isOpen, onClose, initialMode = 'login' }) {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-lg transition-all disabled:opacity-50"
+                className="w-full btn-primary disabled:opacity-50"
               >
                 {loading ? 'Cargando...' : mode === 'login' ? 'Iniciar Sesión' : 'Crear Cuenta'}
               </button>
