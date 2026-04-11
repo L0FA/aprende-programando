@@ -1,0 +1,16 @@
+{
+  "name": "aprende-programando",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "cd backend && npm start",
+    "dev": "cd backend && npm run dev",
+    "build": "cd backend && npm install && cd ../frontend && npm install && npm run build",
+    "db:generate": "cd backend && npx prisma generate",
+    "db:push": "cd backend && npx prisma db push",
+    "db:seed": "cd backend && node prisma/seed.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
