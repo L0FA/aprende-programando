@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { BookOpen, Code, Brain, Rocket, Database } from 'lucide-react';
-import { useState } from 'react';
 
 const paths = [
   { href: '/courses?category=fundamentos', icon: BookOpen, label: 'Fundamentos', desc: 'Desde cero' },
