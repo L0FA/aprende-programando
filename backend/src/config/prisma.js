@@ -8,9 +8,9 @@ async function createPrismaClient() {
   
   if (useTurso) {
     const { PrismaLibSql } = await import('@prisma/adapter-libsql');
-    const { createClient } = await import('@libsql/client');
-    const libsql = createClient({ url: process.env.TURSO_URL });
-    const adapter = new PrismaLibSql(libsql);
+    const adapter = new PrismaLibSql({
+      url: process.env.TURSO_URL
+    });
     return new PrismaClient({ adapter });
   }
   return new PrismaClient();
