@@ -4,4 +4,4 @@ set -o errexit
 
 npm install
 npx prisma generate
-# npx prisma db push # Optional: runs migrations on every deploy
+npx prisma db push --skip-generate
