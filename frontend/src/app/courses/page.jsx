@@ -1,7 +1,7 @@
 import { api } from '@/lib/api';
 import CoursesPage from '@/components/CoursesGrid';
 
-export const revalidate = 0;
+
 
 export const metadata = { title: 'Cursos | Aprende Programando' };
 

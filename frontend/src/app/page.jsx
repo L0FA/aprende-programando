@@ -1,4 +1,4 @@
-export const revalidate = 0;
+
 
 import { api } from '@/lib/api';
 import Hero from '@/components/Hero';
