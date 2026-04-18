@@ -3,6 +3,18 @@ import { prisma } from '../config/prisma.js';
 
 const router = Router();
 
+router.get('/', async (req, res) => {
+  try {
+    const lessons = await prisma.lesson.findMany({
+      where: { published: true },
+      select: { slug: true }
+    });
+    res.json(lessons);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 router.get('/:slug', async (req, res) => {
   try {
     const lesson = await prisma.lesson.findUnique({

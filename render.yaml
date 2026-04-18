@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: aprende-programando-api
+    runtime: node
+    buildCommand: cd backend && ./render-build.sh
+    startCommand: cd backend && npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: TURSO_URL
+        sync: false
+      - key: TURSO_AUTH_TOKEN
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: "https://aprendeprogramando.portfolioslf.com"
+      - key: ENABLE_ADMIN
+        value: "true"

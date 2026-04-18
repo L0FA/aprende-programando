@@ -6,7 +6,24 @@ import PageTransition from '@/components/PageTransition';
 
 export const metadata = {
   title: 'Aprende Programando | Cursos de Código desde Cero',
-  description: 'Domina los editores de código, aprende IA y conviértete en desarrollador.',
+  description: 'Domina los editores de código, aprende IA y conviértete en desarrollador con cursos gratuitos.',
+  keywords: ['programación', 'cursos gratis', 'desarrollo web', 'inteligencia artificial', 'aprender código'],
+  authors: [{ name: 'Aprende Programando' }],
+  openGraph: {
+    title: 'Aprende Programando',
+    description: 'Domina los editores de código, aprende IA y conviértete en desarrollador.',
+    url: 'https://aprendeprogramando.com',
+    siteName: 'Aprende Programando',
+    locale: 'es_ES',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Aprende Programando',
+    description: 'Cursos de código desde cero.',
+  },
+  viewport: 'width=device-width, initial-scale=1',
+  themeColor: '#4F46E5',
 };
 
 export default function RootLayout({ children }) {

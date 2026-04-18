@@ -14,6 +14,18 @@ async function getCourse(slug) {
   catch { return null; }
 }
 
+export async function generateStaticParams() {
+  try {
+    const courses = await api.courses.getAll();
+    return courses.map((course) => ({
+      slug: course.slug,
+    }));
+  } catch (error) {
+    console.error('Error generating static params for courses:', error);
+    return [];
+  }
+}
+
 const difficultyLabels = { BEGINNER: 'Principiante', INTERMEDIATE: 'Intermedio', ADVANCED: 'Avanzado', TECH_LEAD: 'Tech Lead', EXTREME: 'Extremo' };
 
 export default async function CoursePage({ params }) {
