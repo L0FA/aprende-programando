@@ -7,13 +7,14 @@
   "scripts": {
     "start": "node src/index.js",
     "start:prod": "node src/index.js",
+    "deploy:render": "npm install --legacy-peer-deps && npx prisma generate && npx prisma db push --skip-generate && node src/index.js",
     "dev": "node --watch src/index.js",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "node prisma/seed.js"
   },
   "dependencies": {
-    "@libsql/client": "^0.17.2",
+    "@libsql/client": "0.8.0",
     "@prisma/adapter-libsql": "5.22.0",
     "@prisma/client": "^5.22.0",
     "bcryptjs": "^2.4.3",
