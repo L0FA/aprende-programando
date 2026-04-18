@@ -15,6 +15,19 @@ async function getCategory(slug) {
   catch { return null; }
 }
 
+export async function generateStaticParams() {
+  try {
+    const categories = await api.categories.getAll();
+    if (!categories || categories.length === 0) return [{ slug: 'empty' }];
+    return categories.map((category) => ({
+      slug: category.slug,
+    }));
+  } catch (error) {
+    console.error('Error generating static params for categories:', error);
+    return [{ slug: 'empty' }];
+  }
+}
+
 export default async function CategoryPage({ params }) {
   const category = await getCategory(params.slug);
 

@@ -17,12 +17,13 @@ async function getCourse(slug) {
 export async function generateStaticParams() {
   try {
     const courses = await api.courses.getAll();
+    if (!courses || courses.length === 0) return [{ slug: 'empty' }];
     return courses.map((course) => ({
       slug: course.slug,
     }));
   } catch (error) {
     console.error('Error generating static params for courses:', error);
-    return [];
+    return [{ slug: 'empty' }];
   }
 }
 

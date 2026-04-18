@@ -18,12 +18,13 @@ async function getLesson(slug) {
 export async function generateStaticParams() {
   try {
     const lessons = await api.lessons.getAll();
+    if (!lessons || lessons.length === 0) return [{ slug: 'empty' }];
     return lessons.map((lesson) => ({
       slug: lesson.slug,
     }));
   } catch (error) {
     console.error('Error generating static params for lessons:', error);
-    return [];
+    return [{ slug: 'empty' }];
   }
 }
 
